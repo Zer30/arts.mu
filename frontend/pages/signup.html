@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - arts.mu</title>
+    <link rel="stylesheet" href="/frontend/assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/frontend/pages/index.html" class="logo">a.</a>
+        </nav>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-form-container">
+                <h1>Create Account</h1>
+                <p>Join arts.mu community today</p>
+                
+                <div class="account-type-selector">
+                    <button type="button" class="account-type active" data-type="collector">
+                        <span class="icon">🎨</span>
+                        <h3>Join as Collector</h3>
+                        <p>Browse and collect extraordinary artworks</p>
+                    </button>
+                    <button type="button" class="account-type" data-type="artist">
+                        <span class="icon">👨‍🎨</span>
+                        <h3>Join as Artist</h3>
+                        <p>Share and sell your artwork</p>
+                    </button>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group artist-fields" style="display: none;">
+                        <label for="artistBio">Artist Bio</label>
+                        <textarea id="artistBio" rows="3"></textarea>
+                    </div>
+                    <div class="form-group artist-fields" style="display: none;">
+                        <label for="website">Website (Optional)</label>
+                        <input type="url" id="website">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <div class="form-actions">
+                        <label class="terms">
+                            <input type="checkbox" required>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+                <p class="auth-switch">
+                    Already have an account? <a href="/frontend/pages/signin.html">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <script src="/frontend/js/signup.js"></script>
+</body>
+</html>

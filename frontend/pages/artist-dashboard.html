@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Dashboard - arts.mu</title>
+    <link rel="stylesheet" href="/frontend/assets/css/styles.css">
+    <link rel="stylesheet" href="/frontend/assets/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <nav class="container">
+                <a href="/frontend/pages/index.html" class="logo">a.</a>
+                <ul class="nav-links">
+                    <li><a href="/frontend/pages/artworks.html">Artworks</a></li>
+                    <li><a href="/frontend/pages/artists.html">Artists</a></li>
+                    <li><a href="/frontend/pages/dashboard.html" id="dashboardLink">Dashboard</a></li>
+                </ul>
+                <div class="cart-button">
+                    <a href="/frontend/pages/cart.html" class="cart-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="/frontend/pages/signin.html" class="sign-in" id="signInBtn">Sign In</a>
+                    <a href="/frontend/pages/signup.html" class="sign-up" id="signUpBtn">Sign Up</a>
+                    <button class="sign-out" id="signOutBtn" style="display: none;">Sign Out</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li class="active" data-section="dashboard">
+                            <button data-section="dashboard">
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                </span>
+                                Dashboard
+                            </button>
+                        </li>
+                        <li data-section="artworks">
+                            <button data-section="artworks">
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 3H3v18h18V3z"></path>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <path d="M21 15l-5-5L5 21"></path>
+                                    </svg>
+                                </span>
+                                My Artworks
+                            </button>
+                        </li>
+                        <li data-section="orders">
+                            <button data-section="orders">
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                    </svg>
+                                </span>
+                                Orders
+                            </button>
+                        </li>
+                        <li data-section="settings">
+                            <button data-section="settings">
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                    </svg>
+                                </span>
+                                Settings
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="dashboard-content">
+                <!-- Profile Section -->
+                <section class="section dashboard" id="dashboard" style="display: none;">
+                    <div class="dashboard-header">
+                        <h2>Dashboard</h2>
+                    </div>
+                    <div class="artist-info">
+                        <img id="artistAvatar" src="" alt="Artist Avatar" class="avatar">
+                        <h3 id="artistName"></h3>
+                        <p id="artistBio"></p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span>Followers:</span>
+                                <span id="followersCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orders-table">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- My Artworks Section -->
+                <section class="section artworks" id="artworks" style="display: none;">
+                    <h2>My Artworks</h2>
+                    <div class="artworks-grid">
+                        <!-- Artworks will be loaded here -->
+                    </div>
+                    <button id="uploadArtwork" class="btn-primary">Upload New Artwork</button>
+                </section>
+
+                <!-- Orders Section -->
+                <section class="section orders" id="orders" style="display: none;">
+                    <h2>Orders</h2>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Artwork</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="section settings" id="settings" style="display: none;">
+                    <h2>Account Settings</h2>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileImage">Profile Image</label>
+                            <input type="file" id="profileImage" name="profileImage" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Artwork Upload Modal -->
+    <div id="artworkModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Upload New Artwork</h2>
+            <form id="artworkUploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" name="price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="painting">Painting</option>
+                        <option value="photography">Photography</option>
+                        <option value="digital">Digital Art</option>
+                        <option value="sculpture">Sculpture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="medium">Medium</label>
+                    <input type="text" id="medium" name="medium" required>
+                </div>
+                <div class="form-group">
+                    <label for="artworkImage">Artwork Image</label>
+                    <input type="file" id="artworkImage"  name="artworkImage"  accept="image/*" required>
+                </div>
+                <button type="submit" class="btn-primary">Upload Artwork</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/frontend/js/config.js"></script>
+    <script type="module" src="/frontend/js/artist-dashboard.js"></script>
+    <script src="/frontend/js/auth-nav.js"></script>
+</body>
+</html>
