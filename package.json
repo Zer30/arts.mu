@@ -1,6 +1,14 @@
 {
+  "type": "module",
   "dependencies": {
+    "@vercel/node": "^5.1.14",
     "cors": "^2.8.5",
-     "type": "module"
-  }
+    "express": "^5.1.0",
+    "next": "^15.2.4"
+  },
+  "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js",
+  "build": "echo \"Build complete\""
+}
 }
