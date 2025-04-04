@@ -7,8 +7,7 @@
     "next": "^15.2.4"
   },
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js",
-  "build": "echo \"Build complete\""
+  "start": "next start",
+  "dev": "nodemon server.js"
 }
 }
